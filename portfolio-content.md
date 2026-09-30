@@ -124,6 +124,10 @@ Details: See `projects/recovry.md`
 Status: Complete
 Details: See `projects/interactive-timeline.md`
 
+### Digital Tool Directory
+
+Details: See   `projects/digital-tool-directory.md`
+
 ### RAMP Check-In System
 
 Details: See `projects/ramp-checkin.md`
