@@ -154,3 +154,39 @@ a:hover {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Scroll reveal: only hides content when JS is running (the `js` class). */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Easter egg: Konami code swaps the accent to gold for a few seconds. */
+:root[data-ssj] {
+  --accent: #8a5a00;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-ssj]:not([data-theme='light']) {
+    --accent: #ffc83d;
+  }
+}
+
+:root[data-theme='dark'][data-ssj] {
+  --accent: #ffc83d;
+}

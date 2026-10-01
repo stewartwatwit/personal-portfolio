@@ -5,7 +5,16 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="container row mono">
     <p>© {year} William Stewart</p>
-    <p>Built with Astro</p>
+    <p class="balls" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span class="four"></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+    <p title="Dragon Radar not included.">Built with Astro</p>
   </div>
 </footer>
 
@@ -20,7 +29,39 @@ const year = new Date().getFullYear();
   .row {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
     gap: var(--space-2);
+  }
+
+  /* Seven barely-there dots. Hovering the fourth reveals its star. */
+  .balls {
+    display: flex;
+    gap: 6px;
+  }
+
+  .balls span {
+    position: relative;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--rule);
+  }
+
+  .balls .four::after {
+    content: '★';
+    position: absolute;
+    inset: -4px;
+    display: grid;
+    place-items: center;
+    font-size: 8px;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .balls .four:hover::after {
+    opacity: 1;
   }
 </style>

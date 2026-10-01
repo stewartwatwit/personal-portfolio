@@ -79,12 +79,12 @@ const others = projects.filter((p) => !p.featured);
       </li>
       <li>
         <a class="mono" href={profile.github} target="_blank" rel="noopener">
-          GitHub
+          GitHub <span class="visually-hidden">(opens in a new tab)</span>
         </a>
       </li>
       <li>
         <a class="mono" href={profile.linkedin} target="_blank" rel="noopener">
-          LinkedIn
+          LinkedIn <span class="visually-hidden">(opens in a new tab)</span>
         </a>
       </li>
       <li>
@@ -94,7 +94,8 @@ const others = projects.filter((p) => !p.featured);
           target="_blank"
           rel="noopener"
         >
-          View résumé ({profile.resume.label})
+          View résumé ({profile.resume.label}){' '}
+          <span class="visually-hidden">(opens in a new tab)</span>
         </a>
       </li>
       <li>

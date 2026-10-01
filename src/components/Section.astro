@@ -10,13 +10,15 @@ const { id, number, title } = Astro.props;
 
 <section {id} class="section" aria-labelledby={`${id}-title`}>
   <div class="container">
-    <header class="head">
+    <header class="head reveal">
       <p class="mono num" aria-hidden="true">
         {number} /
       </p>
       <h2 id={`${id}-title`}>{title}</h2>
     </header>
-    <slot />
+    <div class="reveal">
+      <slot />
+    </div>
   </div>
 </section>
 

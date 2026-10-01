@@ -1,0 +1,39 @@
+<script>
+  // Console message for anyone who opens DevTools.
+  console.log(
+    '%cGomu Gomu no... hire me!',
+    'font: 600 14px monospace; color: #ff7a4d;',
+  );
+  console.log(
+    '%cPower level: still climbing.',
+    'font: 12px monospace; color: #888;',
+  );
+
+  // Konami code briefly swaps the accent colour to gold. Resets on its own.
+  const code = [
+    'ArrowUp',
+    'ArrowUp',
+    'ArrowDown',
+    'ArrowDown',
+    'ArrowLeft',
+    'ArrowRight',
+    'ArrowLeft',
+    'ArrowRight',
+    'b',
+    'a',
+  ];
+  let progress = 0;
+  let timer: number | undefined;
+
+  addEventListener('keydown', (e) => {
+    const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    progress = key === code[progress] ? progress + 1 : key === code[0] ? 1 : 0;
+    if (progress === code.length) {
+      progress = 0;
+      const root = document.documentElement;
+      root.dataset.ssj = '';
+      clearTimeout(timer);
+      timer = window.setTimeout(() => delete root.dataset.ssj, 8000);
+    }
+  });
+</script>

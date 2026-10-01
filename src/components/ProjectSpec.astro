@@ -24,7 +24,8 @@ const { project } = Astro.props;
       <dt>Repository</dt>
       <dd>
         <a href={project.repoUrl} target="_blank" rel="noopener">
-          View on GitHub
+          View on GitHub{' '}
+          <span class="visually-hidden">(opens in a new tab)</span>
         </a>
       </dd>
     </div>

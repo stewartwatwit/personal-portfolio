@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found | William Stewart">
+  <section class="container lost">
+    <p class="mono code">404</p>
+    <h1>This island isn't on the Grand Line.</h1>
+    <p>The page you're looking for doesn't exist.</p>
+    <a class="mono" href="/">
+      ← Back to the home page
+    </a>
+  </section>
+</BaseLayout>
+
+<style>
+  .lost {
+    padding-top: var(--space-6);
+    display: grid;
+    gap: var(--space-3);
+    justify-items: start;
+  }
+
+  .code {
+    color: var(--accent);
+  }
+
+  h1 {
+    font-size: clamp(2rem, 7vw, 4rem);
+    max-width: 18ch;
+  }
+</style>
