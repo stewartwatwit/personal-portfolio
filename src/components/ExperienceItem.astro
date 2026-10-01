@@ -45,8 +45,10 @@ const { role, org, dates, bullets } = Astro.props;
 
   ul {
     margin: 0;
-    padding-left: 1.1rem;
-    max-width: var(--measure);
+    padding: var(--space-4) var(--space-4) var(--space-4)
+      calc(var(--space-4) + 1.1rem);
+    background: var(--surface);
+    border: 1px solid var(--rule);
   }
 
   li + li {
