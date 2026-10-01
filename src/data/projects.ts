@@ -7,7 +7,6 @@ export interface Project {
   name: string;
   featured: boolean;
   status: string;
-  statusNote?: string;
   summary: string;
   stack: string[];
   problem: string;
@@ -26,7 +25,6 @@ export const projects: Project[] = [
     name: 'Distributed Job Queue',
     featured: true,
     status: 'In Development',
-    statusNote: 'Not currently deployed.',
     summary:
       'A distributed job processing system built with Java and Spring Boot. Jobs are submitted through a REST API and handled by worker components, with job state persisted so each job can be tracked through its lifecycle.',
     stack: [
@@ -118,7 +116,6 @@ export const projects: Project[] = [
     name: 'Interactive Timeline',
     featured: true,
     status: 'Complete',
-    statusNote: 'No longer currently deployed.',
     summary:
       'A full-stack interactive timeline application with a Spring Boot REST API, a React frontend, and PostgreSQL persistence. Built to practice a separated frontend/backend architecture.',
     stack: [
@@ -165,7 +162,6 @@ export const projects: Project[] = [
     name: 'WIT Digital Tool Directory',
     featured: true,
     status: 'Complete',
-    statusNote: 'Waiting on software list review.',
     summary:
       'A university-wide software directory for Wentworth Institute of Technology that gives students and faculty one searchable place to find approved software and learn how to access it. I led its implementation during my co-op.',
     stack: [
@@ -239,8 +235,6 @@ export const projects: Project[] = [
     name: 'Classroom Automation',
     featured: false,
     status: 'In Development',
-    statusNote:
-      'Developed and tested locally. Raspberry Pi deployment and end-to-end classroom testing are still to come.',
     summary:
       "A Node-RED workflow that connects Wentworth's 25Live scheduling system to classroom AV equipment, intended to activate equipment ahead of scheduled classes through a Crestron CP3 processor.",
     stack: [
