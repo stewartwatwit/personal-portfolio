@@ -163,7 +163,7 @@ export const projects: Project[] = [
     featured: true,
     status: 'Unfinished',
     summary:
-      'A software directory built for Wentworth Institute of Technology to give students and faculty one searchable place to find approved software and learn how to access it. I led its implementation during my co-op. The project was not completed.',
+      'A software directory built for Wentworth Institute of Technology to give students and faculty one searchable place to find approved software and learn how to access it. I led its implementation during my co-op. The project is currently waiting on software list approval.',
     stack: [
       'Microsoft Power Pages',
       'Microsoft Dataverse',
@@ -179,7 +179,7 @@ export const projects: Project[] = [
     solution:
       'A Power Pages application backed by Dataverse, with software records retrieved dynamically through Liquid and FetchXML.',
     keyDetails: [
-      'Several ways to discover software: general search, functionality, major, department, and emerging software.',
+      'Multiple ways to discover software: general search, functionality and major.',
       'Status logic that keeps records marked Retired or Active (No Longer Supported) out of user-facing results, and handles pilot software separately.',
       'Card-based interface with modal detail views, an installation guide, extension information, and Enterprise Protected indicators, styled to the university identity.',
       'Power Pages security configured through web roles, permissions, and Dataverse access settings.',
@@ -196,7 +196,7 @@ export const projects: Project[] = [
       ],
     },
     outcome:
-      'Built to give students and faculty a centralized way to discover university-approved software, with documented configuration and maintenance procedures. The project was not completed.',
+      'Built to give students and faculty a centralized way to discover university-approved software, with documented configuration and maintenance procedures. This project is currently waiting on software list approval.',
     source: 'projects/digital-tool-directory.md',
   },
   {
