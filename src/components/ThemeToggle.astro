@@ -2,7 +2,8 @@
   type="button"
   class="theme-toggle mono"
   data-theme-toggle
-  aria-label="Toggle light and dark theme"
+  aria-label="Dark theme"
+  aria-pressed="false"
 >
   <span aria-hidden="true">theme</span>
 </button>
@@ -27,17 +28,21 @@
 
 <script>
   const root = document.documentElement;
-  document
-    .querySelector<HTMLButtonElement>('[data-theme-toggle]')
-    ?.addEventListener('click', () => {
-      const isDark =
-        root.dataset.theme === 'dark' ||
-        (!root.dataset.theme &&
-          matchMedia('(prefers-color-scheme: dark)').matches);
-      const next = isDark ? 'light' : 'dark';
-      root.dataset.theme = next;
-      try {
-        localStorage.setItem('theme', next);
-      } catch {}
-    });
+  const button = document.querySelector<HTMLButtonElement>(
+    '[data-theme-toggle]',
+  );
+  const isDark = () =>
+    root.dataset.theme === 'dark' ||
+    (!root.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+  const sync = () => button?.setAttribute('aria-pressed', String(isDark()));
+
+  sync();
+  button?.addEventListener('click', () => {
+    const next = isDark() ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch {}
+    sync();
+  });
 </script>

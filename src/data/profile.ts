@@ -6,6 +6,17 @@ export const profile = {
   tagline:
     'Software engineer building reliable backend systems and full-stack applications.',
   location: 'Brookline, MA',
+  // Technologies named in the Professional Summary (portfolio-content.md).
+  keyStack: [
+    'Java',
+    'Spring Boot',
+    'Python',
+    'REST APIs',
+    'SQL',
+    'PostgreSQL',
+    'Docker',
+    'Automated testing',
+  ],
   email: 'wstew1055@gmail.com',
   github: 'https://github.com/stewartwatwit',
   linkedin: 'https://www.linkedin.com/in/william-stewart2',

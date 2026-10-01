@@ -161,9 +161,9 @@ export const projects: Project[] = [
     slug: 'digital-tool-directory',
     name: 'WIT Digital Tool Directory',
     featured: true,
-    status: 'Complete',
+    status: 'Unfinished',
     summary:
-      'A university-wide software directory for Wentworth Institute of Technology that gives students and faculty one searchable place to find approved software and learn how to access it. I led its implementation during my co-op.',
+      'A software directory built for Wentworth Institute of Technology to give students and faculty one searchable place to find approved software and learn how to access it. I led its implementation during my co-op. The project was not completed.',
     stack: [
       'Microsoft Power Pages',
       'Microsoft Dataverse',
@@ -196,7 +196,7 @@ export const projects: Project[] = [
       ],
     },
     outcome:
-      'Provides students and faculty a centralized way to discover university-approved software, with documented configuration and maintenance procedures.',
+      'Built to give students and faculty a centralized way to discover university-approved software, with documented configuration and maintenance procedures. The project was not completed.',
     source: 'projects/digital-tool-directory.md',
   },
   {
@@ -234,9 +234,9 @@ export const projects: Project[] = [
     slug: 'classroom-automation',
     name: 'Classroom Automation',
     featured: false,
-    status: 'In Development',
+    status: 'Unfinished',
     summary:
-      "A Node-RED workflow that connects Wentworth's 25Live scheduling system to classroom AV equipment, intended to activate equipment ahead of scheduled classes through a Crestron CP3 processor.",
+      "A Node-RED workflow intended to connect Wentworth's 25Live scheduling system to classroom AV equipment and activate it ahead of scheduled classes through a Crestron CP3 processor. It was developed and tested locally; Raspberry Pi deployment and end-to-end classroom testing were not completed.",
     stack: [
       'Node-RED',
       '25Live REST API',

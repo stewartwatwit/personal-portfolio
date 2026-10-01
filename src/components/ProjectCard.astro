@@ -22,9 +22,9 @@ const hidden = project.stack.length - shownStack.length;
     ))}
     {hidden > 0 && <li class="more">+{hidden} more</li>}
   </ul>
-  <a class="more-link mono" href={`/projects/${project.slug}`}>
-    Read case study<span class="visually-hidden">: {project.name}</span> →
-  </a>
+  <span class="more-link mono" aria-hidden="true">
+    Read case study →
+  </span>
 </article>
 
 <style>
@@ -96,7 +96,6 @@ const hidden = project.stack.length - shownStack.length;
   }
 
   .more-link {
-    text-decoration: none;
     color: var(--accent);
   }
 </style>
