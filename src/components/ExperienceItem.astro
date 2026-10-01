@@ -1,0 +1,61 @@
+---
+interface Props {
+  role: string;
+  org: string;
+  dates: string;
+  bullets: string[];
+}
+
+const { role, org, dates, bullets } = Astro.props;
+---
+
+<article class="item">
+  <header>
+    <p class="mono dates">{dates}</p>
+    <h3>{role}</h3>
+    <p class="org">{org}</p>
+  </header>
+  <ul>
+    {bullets.map((b) => (
+      <li>{b}</li>
+    ))}
+  </ul>
+</article>
+
+<style>
+  .item {
+    display: grid;
+    gap: var(--space-3) var(--space-5);
+    padding-block: var(--space-4);
+    border-top: 1px solid var(--rule);
+  }
+
+  .dates {
+    color: var(--accent);
+  }
+
+  h3 {
+    font-size: 1.375rem;
+    margin-top: var(--space-1);
+  }
+
+  .org {
+    color: var(--ink-muted);
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    max-width: var(--measure);
+  }
+
+  li + li {
+    margin-top: var(--space-2);
+  }
+
+  @media (min-width: 56rem) {
+    .item {
+      grid-template-columns: 2fr 3fr;
+    }
+  }
+</style>

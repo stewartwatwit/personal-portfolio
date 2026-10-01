@@ -1,0 +1,83 @@
+---
+interface Props {
+  title: string;
+  steps: string[];
+  note?: string;
+}
+
+const { title, steps, note } = Astro.props;
+---
+
+<figure class="diagram">
+  <figcaption class="mono">{title}</figcaption>
+  <ol>
+    {steps.map((s) => (
+      <li>{s}</li>
+    ))}
+  </ol>
+  {note && <p class="note mono">{note}</p>}
+</figure>
+
+<style>
+  .diagram {
+    margin: 0;
+    padding: var(--space-4);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+  }
+
+  figcaption {
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-3);
+  }
+
+  ol {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    position: relative;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+
+  /* Arrow pointing to the next step */
+  li:not(:last-child)::after {
+    content: '↓';
+    position: absolute;
+    left: var(--space-3);
+    top: calc(100% + 0.15rem);
+    color: var(--accent);
+  }
+
+  .note {
+    margin-top: var(--space-3);
+    color: var(--ink-muted);
+  }
+
+  @media (min-width: 48rem) {
+    ol {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-3) var(--space-5);
+    }
+
+    li:not(:last-child)::after {
+      content: '→';
+      left: calc(100% + 0.9rem);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+</style>

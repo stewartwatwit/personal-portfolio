@@ -1,27 +1,199 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import SkillGroup from '../components/SkillGroup.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ExperienceItem from '../components/ExperienceItem.astro';
+import { profile, education } from '../data/profile';
+import { skills } from '../data/skills';
+import { experience } from '../data/experience';
+import { projects } from '../data/projects';
+
+const featured = projects.filter((p) => p.featured);
+const others = projects.filter((p) => !p.featured);
 ---
 
 <BaseLayout>
-  <section class="container intro">
-    <p class="mono">Site foundation</p>
-    <h1>William Stewart</h1>
-    <p>
-      Software engineer building reliable backend systems and full-stack
-      applications.
+  <Hero />
+
+  <Section id="about" number="01" title="About">
+    <p class="about">{profile.summary}</p>
+  </Section>
+
+  <Section id="skills" number="02" title="Technical Skills">
+    <div class="skills">
+      {skills.map((s) => (
+        <SkillGroup {...s} />
+      ))}
+    </div>
+  </Section>
+
+  <Section id="projects" number="03" title="Projects">
+    <div class="featured">
+      {featured.map((p) => (
+        <ProjectCard project={p} />
+      ))}
+    </div>
+    <div class="others">
+      {others.map((p) => (
+        <ProjectCard project={p} />
+      ))}
+    </div>
+  </Section>
+
+  <Section id="experience" number="04" title="Experience">
+    {experience.map((e) => (
+      <ExperienceItem {...e} />
+    ))}
+  </Section>
+
+  <Section id="education" number="05" title="Education">
+    <div class="edu">
+      <div>
+        <h3>{education.school}</h3>
+        <p>{education.degree}</p>
+        <p class="mono date">{education.date}</p>
+      </div>
+      <div>
+        <h3 class="mono label">Relevant coursework</h3>
+        <ul class="mono">
+          {education.coursework.map((c) => (
+            <li>{c}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="contact" number="06" title="Contact">
+    <p class="about">
+      I'm looking for entry-level software engineering roles. The best way to
+      reach me is by email.
     </p>
-    <p class="mono">Content sections arrive in the next pull request.</p>
-  </section>
+    <ul class="contact">
+      <li>
+        <a class="mono" href={`mailto:${profile.email}`}>
+          {profile.email}
+        </a>
+      </li>
+      <li>
+        <a class="mono" href={profile.github} target="_blank" rel="noopener">
+          GitHub
+        </a>
+      </li>
+      <li>
+        <a class="mono" href={profile.linkedin} target="_blank" rel="noopener">
+          LinkedIn
+        </a>
+      </li>
+      <li>
+        <a
+          class="mono"
+          href={profile.resume.href}
+          target="_blank"
+          rel="noopener"
+        >
+          View résumé ({profile.resume.label})
+        </a>
+      </li>
+      <li>
+        <a
+          class="mono"
+          href={profile.resume.href}
+          download={profile.resume.downloadName}
+        >
+          Download résumé
+        </a>
+      </li>
+    </ul>
+  </Section>
 </BaseLayout>
 
 <style>
-  .intro {
-    padding-block: var(--space-6);
-    display: grid;
-    gap: var(--space-3);
+  .about {
+    max-width: var(--measure);
+    font-size: 1.25rem;
+    line-height: 1.55;
   }
 
-  h1 {
-    font-size: clamp(2.5rem, 8vw, 5rem);
+  .skills {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .featured,
+  .others {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .others {
+    margin-top: var(--space-4);
+  }
+
+  .edu {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  h3 {
+    font-size: 1.375rem;
+  }
+
+  .label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-3);
+  }
+
+  .date {
+    margin-top: var(--space-1);
+    color: var(--accent);
+  }
+
+  .edu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-5);
+    list-style: none;
+    padding: 0;
+    margin: var(--space-4) 0 0;
+  }
+
+  @media (min-width: 48rem) {
+    .skills {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .featured,
+    .others {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .edu {
+      grid-template-columns: 2fr 3fr;
+    }
+  }
+
+  @media (min-width: 72rem) {
+    .skills {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .others {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 </style>

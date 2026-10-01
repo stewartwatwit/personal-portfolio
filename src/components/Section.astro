@@ -1,0 +1,44 @@
+---
+interface Props {
+  id: string;
+  number: string;
+  title: string;
+}
+
+const { id, number, title } = Astro.props;
+---
+
+<section {id} class="section" aria-labelledby={`${id}-title`}>
+  <div class="container">
+    <header class="head">
+      <p class="mono num" aria-hidden="true">
+        {number} /
+      </p>
+      <h2 id={`${id}-title`}>{title}</h2>
+    </header>
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    padding-top: var(--space-6);
+  }
+
+  .head {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: var(--space-3);
+    margin-bottom: var(--space-5);
+  }
+
+  .num {
+    color: var(--accent);
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+  }
+</style>
