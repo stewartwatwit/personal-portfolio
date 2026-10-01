@@ -36,4 +36,95 @@
       timer = window.setTimeout(() => delete root.dataset.ssj, 8000);
     }
   });
+
+  // Dragon Ball: while the tab is in the background, the title goes searching.
+  const realTitle = document.title;
+  document.addEventListener('visibilitychange', () => {
+    document.title = document.hidden
+      ? 'Still searching for the Dragon Balls…'
+      : realTitle;
+  });
+
+  // Typed words (no UI hints them). Motion effects respect reduced motion.
+  const calm = matchMedia('(prefers-reduced-motion: reduce)');
+  let typed = '';
+  const words: Record<string, () => void> = {
+    // One Piece: the hero name stretches, then snaps back.
+    gomu: () => {
+      const name = document.getElementById('hero-title');
+      if (!name || calm.matches) return;
+      name.classList.add('egg-gomu');
+      setTimeout(() => name.classList.remove('egg-gomu'), 350);
+    },
+    // Dragon Ball: one beam sweeps under the tagline.
+    kamehameha: () => {
+      const tagline = document.querySelector('.tagline');
+      if (!tagline || calm.matches) return;
+      tagline.classList.remove('egg-beam');
+      void (tagline as HTMLElement).offsetWidth;
+      tagline.classList.add('egg-beam');
+      setTimeout(() => tagline.classList.remove('egg-beam'), 900);
+    },
+    // Destiny 2: the footer note addresses the Guardian for a few seconds.
+    ghost: () => {
+      const note = document.querySelector('[data-footer-note]');
+      if (!note || note.hasAttribute('data-egg')) return;
+      const original = note.textContent;
+      note.setAttribute('data-egg', '');
+      note.textContent = 'Eyes up, Guardian.';
+      setTimeout(() => {
+        note.textContent = original;
+        note.removeAttribute('data-egg');
+      }, 3000);
+    },
+  };
+
+  addEventListener('keydown', (e) => {
+    if (e.ctrlKey || e.metaKey || e.altKey || e.key.length !== 1) return;
+    typed = (typed + e.key.toLowerCase()).slice(-10);
+    for (const word in words) {
+      if (typed.endsWith(word)) {
+        typed = '';
+        words[word]();
+        break;
+      }
+    }
+  });
 </script>
+
+<style is:global>
+  .egg-gomu {
+    transform: scaleX(1.03);
+    transform-origin: left center;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .tagline {
+    position: relative;
+  }
+
+  .tagline.egg-beam::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.35rem;
+    height: 2px;
+    background: var(--accent);
+    animation: egg-beam 0.8s ease-out forwards;
+  }
+
+  @keyframes egg-beam {
+    from {
+      width: 0;
+      opacity: 1;
+    }
+    70% {
+      width: 100%;
+      opacity: 1;
+    }
+    to {
+      width: 100%;
+      opacity: 0;
+    }
+  }
+</style>
