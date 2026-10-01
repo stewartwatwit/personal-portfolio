@@ -3,6 +3,12 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import EasterEggs from '../components/EasterEggs.astro';
+import sans400 from '@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff2?url';
+import sans600 from '@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff2?url';
+import mono400 from '@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2?url';
+
+// Fonts used above the fold are preloaded so text doesn't reflow when they arrive.
+const preloadFonts = [sans400, sans600, mono400];
 
 interface Props {
   title?: string;
@@ -36,6 +42,9 @@ const {
       media="(prefers-color-scheme: dark)"
     />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {preloadFonts.map((href) => (
+      <link rel="preload" as="font" type="font/woff2" href={href} crossorigin />
+    ))}
     <script is:inline>
       // Marks that JS is running (scroll-reveal styles depend on it), then
       // applies a saved theme before first paint to avoid a flash.

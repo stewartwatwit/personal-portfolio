@@ -71,12 +71,15 @@ const others = projects.filter((p) => !p.featured);
       I'm looking for entry-level software engineering roles. The best way to
       reach me is by email.
     </p>
+    <div class="contact-actions">
+      <a class="btn primary" href={`mailto:${profile.email}`}>
+        {profile.email}
+      </a>
+      <a class="btn" href={profile.resume.href} target="_blank" rel="noopener">
+        View résumé <span class="visually-hidden">(opens in a new tab)</span>
+      </a>
+    </div>
     <ul class="contact">
-      <li>
-        <a class="mono" href={`mailto:${profile.email}`}>
-          {profile.email}
-        </a>
-      </li>
       <li>
         <a class="mono" href={profile.github} target="_blank" rel="noopener">
           GitHub <span class="visually-hidden">(opens in a new tab)</span>
@@ -91,20 +94,9 @@ const others = projects.filter((p) => !p.featured);
         <a
           class="mono"
           href={profile.resume.href}
-          target="_blank"
-          rel="noopener"
-        >
-          View résumé ({profile.resume.label}){' '}
-          <span class="visually-hidden">(opens in a new tab)</span>
-        </a>
-      </li>
-      <li>
-        <a
-          class="mono"
-          href={profile.resume.href}
           download={profile.resume.downloadName}
         >
-          Download résumé
+          Download résumé ({profile.resume.label})
         </a>
       </li>
     </ul>
@@ -164,6 +156,13 @@ const others = projects.filter((p) => !p.featured);
     gap: var(--space-1);
   }
 
+  .contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+
   .contact {
     display: flex;
     flex-wrap: wrap;
@@ -171,6 +170,11 @@ const others = projects.filter((p) => !p.featured);
     list-style: none;
     padding: 0;
     margin: var(--space-4) 0 0;
+  }
+
+  .contact a {
+    display: inline-block;
+    padding-block: var(--space-1);
   }
 
   @media (min-width: 48rem) {

@@ -51,12 +51,14 @@ const { title, steps, note } = Astro.props;
     font-size: 0.875rem;
   }
 
-  /* Arrow pointing to the next step */
-  li:not(:last-child)::after {
+  /* Arrow leading into each step after the first. The empty alt text keeps
+     screen readers from announcing it. */
+  li:not(:first-child)::before {
     content: '↓';
+    content: '↓' / '';
     position: absolute;
     left: var(--space-3);
-    top: calc(100% + 0.15rem);
+    bottom: calc(100% + 0.15rem);
     color: var(--accent);
   }
 
@@ -71,11 +73,15 @@ const { title, steps, note } = Astro.props;
       flex-wrap: wrap;
       align-items: center;
       gap: var(--space-3) var(--space-5);
+      padding-left: 1.75rem;
     }
 
-    li:not(:last-child)::after {
+    li:not(:first-child)::before {
       content: '→';
-      left: calc(100% + 0.9rem);
+      content: '→' / '';
+      left: auto;
+      right: calc(100% + 0.9rem);
+      bottom: auto;
       top: 50%;
       transform: translateY(-50%);
     }
