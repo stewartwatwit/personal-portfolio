@@ -1,5 +1,6 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
+import { profile } from '../data/profile';
 
 const links = [
   { href: '/#about', label: 'About' },
@@ -25,7 +26,17 @@ const links = [
         ))}
       </ul>
     </nav>
-    <ThemeToggle />
+    <div class="actions">
+      <a
+        class="resume mono"
+        href={profile.resume.href}
+        target="_blank"
+        rel="noopener"
+      >
+        Résumé
+      </a>
+      <ThemeToggle />
+    </div>
   </div>
 </header>
 
@@ -52,6 +63,27 @@ const links = [
     font-weight: 600;
     text-decoration: none;
     letter-spacing: -0.01em;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .resume {
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    transition:
+      background 0.15s,
+      color 0.15s;
+  }
+
+  .resume:hover {
+    background: var(--accent);
+    color: var(--accent-ink);
   }
 
   nav {
