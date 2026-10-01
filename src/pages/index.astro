@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout>
+  <section class="container intro">
+    <p class="mono">Site foundation</p>
+    <h1>William Stewart</h1>
+    <p>
+      Software engineer building reliable backend systems and full-stack
+      applications.
+    </p>
+    <p class="mono">Content sections arrive in the next pull request.</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    padding-block: var(--space-6);
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+  }
+</style>
